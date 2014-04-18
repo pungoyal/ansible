@@ -1,9 +1,6 @@
 ---
 # file: webservers.yml
 - hosts: webservers
-  tasks:
-    - include: common/tasks/main.yml tags=common
-    - include: webtier/tasks/main.yml tags=webtier
-  handlers:
-    - include: common/handlers/main.yml
-    - include: webtier/handlers/main.yml
+  roles:
+    - common
+    - webtier
