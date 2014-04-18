@@ -1,0 +1,5 @@
+---
+# file: group_vars/all
+ntp: ntp-boston.example.com
+backup: backup-boston.example.com
+asdf: 10
