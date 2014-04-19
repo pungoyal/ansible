@@ -1,0 +1,4 @@
+---
+- name: be sure ansible is installed
+  apt: pkg=ansible state=latest
+  tags: ansible

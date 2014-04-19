@@ -1,9 +1,4 @@
 ---
-# file: dbservers.yml
 - hosts: dbservers
-  tasks:
-    - include: common/tasks/main.yml tags=common
-    - include: dbtier/tasks/main.yml tags=dbtier
-  handlers:
-    - include: common/handlers/main.yml
-    - include: dbtier/handlers/main.yml
+  roles:
+    - common

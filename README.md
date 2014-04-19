@@ -1,5 +1,5 @@
 production            # inventory file for production servers
-stage                 # inventory file for stage environment
+staging               # inventory file for staging environment
 
 group_vars/
   group1              # here we assign variables to particular groups

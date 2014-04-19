@@ -1,4 +1,8 @@
 ---
-# file: site.yml
+- hosts: all
+  tasks:
+  - name: Create a group of all hosts by operating system
+    action: group_by key={{ansible_distribution}}
+- include: confservers.yml
 - include: webservers.yml
 - include: dbservers.yml
