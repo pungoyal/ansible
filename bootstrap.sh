@@ -1,1 +1,0 @@
-ssh -o LogLevel=quiet -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$1 "echo `cat ~/.ssh/id_rsa.pub` >> ~/.ssh/authorized_keys"
