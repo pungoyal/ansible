@@ -1,0 +1,5 @@
+---
+- hosts: spike_boxes
+  roles:
+    - common
+    - jdk

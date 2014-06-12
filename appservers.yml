@@ -2,4 +2,3 @@
 - hosts: appservers
   roles:
     - common
-    - nodejs

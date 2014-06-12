@@ -1,10 +1,22 @@
 ---
+- name: be sure wget is installed
+  apt: pkg=wget state=installed
+  tags: wget
 - name: be sure htop is installed
   apt: pkg=htop state=installed
   tags: htop
 - name: be sure screen is installed
   apt: pkg=screen state=installed
   tags: screen
-- name: be sure git is installed
-  apt: pkg=git state=installed
-  tags: git
+
+- name: create PATHS file
+  file:
+    dest="~/.paths"
+    state=touch
+- name: setup PATHS
+  lineinfile:
+    dest=~/.bashrc
+    line=". ~/.paths"
+    state=present
+    insertafter=EOF
+    create=true

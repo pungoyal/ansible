@@ -1,0 +1,44 @@
+---
+- name: download Oracle JDK to host
+  command: "wget -N -P '{{oracle_jdk_download_dir}}' --no-check-certificate --no-cookies --header 'Cookie: oraclelicense=accept-securebackup-cookie' http://download.oracle.com/otn-pub/java/jdk/{{oracle_jdk_package_subdir}}/{{oracle_jdk_package}}"
+  tags: download
+
+- name: "{{oracle_jdk_installation_dir}} must exist"
+  file:
+    path="{{oracle_jdk_installation_dir}}"
+    state="directory"
+
+- name: remove jdk symlink
+  file:
+    dest="{{oracle_jdk_installation_dir}}/jdk"
+    state=absent
+
+- name: unpacks JDK
+  unarchive:
+    src="{{oracle_jdk_download_dir}}/{{oracle_jdk_package}}"
+    dest="{{oracle_jdk_installation_dir}}"
+    copy=no
+    force=yes
+  tags: unpack
+
+- name: create jdk symlink
+  file:
+    src="{{oracle_jdk_installation_dir}}/jdk{{oracle_jdk_version}}"
+    dest="{{oracle_jdk_installation_dir}}/jdk"
+    state=link
+
+- name: setup JAVA_HOME
+  lineinfile:
+    dest=~/.paths
+    line="export JAVA_HOME={{oracle_jdk_installation_dir}}/jdk/"
+    state=present
+    insertafter=EOF
+    create=true
+
+- name: append JAVA_HOME to PATH
+  lineinfile:
+    dest=~/.paths
+    line="export PATH=$PATH:$JAVA_HOME/bin"
+    state=present
+    insertafter=EOF
+    create=true

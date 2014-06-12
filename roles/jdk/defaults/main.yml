@@ -1,0 +1,7 @@
+---
+# defaults file for oracle_jdk
+oracle_jdk_package_subdir: '8u5-b13'
+oracle_jdk_download_dir: '~/libraries'
+oracle_jdk_package: 'jdk-8u5-linux-x64.tar.gz'
+oracle_jdk_version: '1.8.0_05'
+oracle_jdk_installation_dir: '/opt'
